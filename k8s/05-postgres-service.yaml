@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: naco-postgres
+  namespace: naco
+spec:
+  type: ClusterIP
+  selector:
+    app: naco-postgres
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: 5432

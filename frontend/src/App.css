@@ -1,0 +1,709 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  background: #050505;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #050505;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+  background: #050505;
+}
+
+/* NAVBAR */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 46px;
+  background: rgba(0, 0, 0, 0.96);
+  border-bottom: none;
+}
+
+.brand {
+  font-family: "Pacifico", cursive;
+  font-size: 38px;
+  font-weight: 400;
+  color: #177D8F;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #e5e5e5;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #177D8F;
+  font-weight: 700;
+}
+
+.nav-search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-search input {
+  width: 230px;
+  padding: 10px 14px;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  background: rgba(15, 15, 15, 0.95);
+  color: #ffffff;
+  outline: none;
+}
+
+.nav-search input::placeholder {
+  color: #8f8f8f;
+}
+
+.nav-search input:focus {
+  border-color: #177D8F;
+}
+
+.nav-search button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  background: #177D8F;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.nav-search button:hover {
+  background: #1c93a8;
+}
+
+/* LAYOUT */
+
+.container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 46px 50px;
+  background: #050505;
+}
+
+.message-box,
+.error-box {
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.message-box {
+  background: #112417;
+  border: 1px solid #295437;
+  color: #b8f3c6;
+}
+
+.error-box {
+  background: #2b1111;
+  border: 1px solid #5a2323;
+  color: #ffb1b1;
+}
+
+/* HERO */
+
+.hero-banner {
+  position: relative;
+  height: 560px;
+  min-height: 560px;
+  margin: 0 -46px 28px;
+  overflow: hidden;
+  
+  
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+}
+
+.hero-content {
+  position: absolute;
+  left: 54px;
+  bottom: 95px;
+  z-index: 2;
+  max-width: 650px;
+  text-align: left;
+}
+
+.hero-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #177D8F;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero-content h1 {
+  margin: 0 0 10px;
+  font-size: 58px;
+  line-height: 1.05;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.hero-year {
+  margin: 0 0 14px;
+  color: #d7d7d7;
+  font-size: 18px;
+}
+
+.hero-description {
+  margin: 0;
+  color: #f1f1f1;
+  line-height: 1.6;
+  font-size: 16px;
+  max-width: 620px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.hero-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 54px;
+  height: 54px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  transition: 0.2s ease;
+}
+
+.hero-nav:hover {
+  background: rgba(23, 125, 143, 0.9);
+}
+
+.hero-nav-left {
+  left: 22px;
+}
+
+.hero-nav-right {
+  right: 22px;
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(-50%);
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transition: 0.2s ease;
+}
+
+.hero-dot:hover {
+  background: #ffffff;
+}
+
+.hero-dot.active {
+  width: 28px;
+  border-radius: 999px;
+  background: #177D8F;
+}
+
+/* BUTTONS */
+
+.primary-btn,
+.secondary-btn,
+.card-btn,
+.delete-btn,
+.load-more-btn {
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.primary-btn {
+  padding: 13px 22px;
+  background: #177D8F;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.primary-btn:hover {
+  background: #1c93a8;
+}
+
+.primary-btn:disabled {
+  background: #6a6a6a;
+  color: #d8d8d8;
+  cursor: not-allowed;
+}
+
+.secondary-btn,
+.card-btn,
+.load-more-btn {
+  padding: 13px 22px;
+  background: rgba(109, 109, 110, 0.65);
+  color: #ffffff;
+}
+
+.secondary-btn:hover,
+.card-btn:hover,
+.load-more-btn:hover {
+  background: rgba(109, 109, 110, 0.9);
+}
+
+.card-btn:disabled {
+  background: #151515;
+  color: #7c7c7c;
+  cursor: not-allowed;
+}
+
+.delete-btn {
+  width: 100%;
+  padding: 13px 22px;
+  background: rgba(120, 30, 30, 0.65);
+  color: #ffffff;
+}
+
+.delete-btn:hover {
+  background: rgba(160, 40, 40, 0.85);
+}
+
+/* SECTIONS */
+
+.catalog-section,
+.favorites-page {
+  margin-top: 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px 0 18px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* NETFLIX ROWS */
+
+.netflix-row {
+  width: 100%;
+  margin-bottom: 44px;
+}
+
+.row-title {
+  margin: 0 0 18px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+}
+
+.row-scroll {
+  width: 100%;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 18px;
+  scroll-behavior: smooth;
+}
+
+.row-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.row-scroll::-webkit-scrollbar-track {
+  background: #0b0b0b;
+}
+
+.row-scroll::-webkit-scrollbar-thumb {
+  background: #177D8F;
+  border-radius: 999px;
+}
+
+.netflix-card {
+  position: relative;
+  min-width: 260px;
+  height: 390px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111111;
+  border: 2px solid transparent;
+  transition: 0.25s ease;
+}
+
+.netflix-card.expanded {
+  min-width: 540px;
+  border-color: #ffffff;
+}
+
+.netflix-card:hover {
+  transform: scale(1.03);
+  border-color: #177D8F;
+  z-index: 5;
+}
+
+.netflix-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0c0c0c;
+}
+
+.netflix-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.65) 42%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+}
+
+.netflix-card-content {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+}
+
+.netflix-card-content h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.netflix-card.expanded .netflix-card-content h3 {
+  font-size: 24px;
+}
+
+.netflix-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+  color: #d0d0d0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.netflix-card-content p {
+  margin: 0 0 12px;
+  color: #eeeeee;
+  font-size: 14px;
+  line-height: 1.45;
+  display: none;
+}
+
+.netflix-card.expanded .netflix-card-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.netflix-card .card-btn {
+  display: none;
+}
+
+.netflix-card.expanded .card-btn {
+  display: inline-block;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+/* CLASSIC MOVIE GRID / FAVORITES */
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.movie-card {
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.movie-card:hover {
+  border-color: #177D8F;
+  transform: translateY(-3px);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  background: #0c0c0c;
+}
+
+.movie-content {
+  padding: 14px;
+}
+
+.movie-content h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  color: #ffffff;
+}
+
+.movie-meta {
+  margin: 0 0 10px;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.movie-description {
+  margin: 0 0 14px;
+  color: #dddddd;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.load-more-btn {
+  display: block;
+  margin: 24px auto 0;
+}
+
+.loading-text {
+  margin-top: 18px;
+  color: #cccccc;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 860px) {
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px 24px;
+  }
+
+  .brand {
+    font-size: 34px;
+    margin-right: 0;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .nav-search {
+    width: 100%;
+  }
+
+  .nav-search input {
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 24px 40px;
+  }
+
+  .hero-banner {
+    height: 560px;
+    min-height: 560px;
+    margin: 0 -24px 24px;
+    background-position: center center;
+  }
+
+  .hero-content {
+    left: 32px;
+    right: 32px;
+    bottom: 82px;
+    max-width: none;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .hero-nav {
+    width: 42px;
+    height: 42px;
+    font-size: 30px;
+  }
+
+  .hero-nav-left {
+    left: 12px;
+  }
+
+  .hero-nav-right {
+    right: 12px;
+  }
+
+  .netflix-card.expanded {
+    min-width: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding: 0 16px 32px;
+  }
+
+  .hero-banner {
+    height: 560px;
+    min-height: 560px;
+    margin: 0 -16px 20px;
+    background-position: center center;
+  }
+
+  .hero-content {
+    left: 22px;
+    right: 22px;
+    bottom: 72px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-dots {
+    bottom: 22px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .netflix-card,
+  .netflix-card.expanded {
+    min-width: 260px;
+  }
+}
+
+
+
+.footer {
+  width: 100%;
+  padding: 28px 46px;
+  background: #050505;
+  border-top: 1px solid #1f1f1f;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.footer-container {
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: naco-frontend
+  namespace: naco
+spec:
+  type: ClusterIP
+  selector:
+    app: naco-frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

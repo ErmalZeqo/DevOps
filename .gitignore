@@ -1,0 +1,54 @@
+# =========================
+# Frontend React / Vite
+# =========================
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# Logs npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Backend Python / FastAPI
+# =========================
+venv/
+backend/venv/
+__pycache__/
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Variables secrètes
+# =========================
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+k8s/02-secret.yaml
+# =========================
+# Exports générés
+# =========================
+backend/exports/*.json
+
+# =========================
+# Système / IDE
+# =========================
+.DS_Store
+.vscode/
+.idea/
+
+.vite/
+frontend/src/anncienapp.jsx
+backend/movies.json
+frontend/.env.production

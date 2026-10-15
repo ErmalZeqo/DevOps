@@ -1,0 +1,43 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background: #050505;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #050505;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  display: block;
+  text-align: left;
+  border: none;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+button,
+input {
+  font-family: inherit;
+}

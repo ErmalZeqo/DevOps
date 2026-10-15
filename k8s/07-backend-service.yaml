@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: naco-backend
+  namespace: naco
+spec:
+  type: ClusterIP
+  selector:
+    app: naco-backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000

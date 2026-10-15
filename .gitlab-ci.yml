@@ -1,0 +1,93 @@
+stages:
+  - test
+  - build
+  - docker
+  - deploy
+
+variables:
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+
+# =========================
+# Vérification backend FastAPI
+# =========================
+backend_check:
+  stage: test
+  image: python:3.13-slim
+  before_script:
+    - cd backend
+    - pip install --no-cache-dir -r requirements.txt
+  script:
+    - python -m py_compile main.py
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+# =========================
+# Build frontend React / Vite
+# =========================
+frontend_build:
+  stage: build
+  image: node:22-alpine
+  before_script:
+    - cd frontend
+    - npm ci
+  script:
+    - echo "VITE_API_BASE_URL=/api" > .env.production
+    - npm run build
+  artifacts:
+    paths:
+      - frontend/dist
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+# =========================
+# Vérification Dockerfile backend
+# =========================
+docker_backend:
+  stage: docker
+  image: alpine:3.20
+  script:
+    - test -f backend/Dockerfile
+    - grep -q "FROM" backend/Dockerfile
+    - grep -q "uvicorn" backend/Dockerfile
+    - echo "Dockerfile backend présent et cohérent"
+  needs:
+    - backend_check
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+# =========================
+# Vérification Dockerfile frontend
+# =========================
+docker_frontend:
+  stage: docker
+  image: alpine:3.20
+  script:
+    - test -f frontend/Dockerfile
+    - grep -q "FROM" frontend/Dockerfile
+    - grep -q "npm run build" frontend/Dockerfile
+    - grep -q "nginx" frontend/Dockerfile
+    - echo "Dockerfile frontend présent et cohérent"
+  needs:
+    - frontend_build
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+    
+# =========================
+# Déploiement Kubernetes manuel
+# =========================
+deploy_kubernetes:
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  script:
+    - kubectl version --client
+    - kubectl apply -f k8s/
+  needs:
+    - docker_backend
+    - docker_frontend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: manual

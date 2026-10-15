@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: naco-config
+  namespace: naco
+data:
+  APP_ENV: "production"
+  LOG_LEVEL: "INFO"
+  POSTGRES_DB: "naco"
+  POSTGRES_USER: "naco_user"

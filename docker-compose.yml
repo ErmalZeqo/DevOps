@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: naco-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: naco-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+      
+  db:
+    image: postgres:16
+    container_name: naco-db
+    environment:
+      POSTGRES_DB: naco
+      POSTGRES_USER: naco_user
+      POSTGRES_PASSWORD: naco_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - naco_pgdata:/var/lib/postgresql/data
+
+volumes:
+  naco_pgdata:
